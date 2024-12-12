@@ -4,13 +4,11 @@ import axios from 'axios';
 const BusList = () => {
   const [buses, setBuses] = useState([]);
   const [error, setError] = useState(null);
-  const [newBusName, setNewBusName] = useState(''); // Для имени нового автобуса
-
-  // Функция для загрузки данных
+  const [newBusName, setNewBusName] = useState(''); 
   const fetchData = async () => {
     try {
       const response = await axios.get('https://localhost:7236/api/Bus');
-      console.log('API Response:', response.data); // Проверяем данные
+      console.log('API Response:', response.data); 
       setBuses(Array.isArray(response.data) ? response.data : []);
     } catch (err) {
       setError(err.message);
@@ -18,18 +16,16 @@ const BusList = () => {
   };
   
 
-  // Вызываем fetchData при монтировании компонента
   useEffect(() => {
     fetchData();
   }, []);
 
-  // Функция для добавления автобуса
   const handleAddBus = async () => {
     try {
       const newBus = { name: newBusName, routes: [] };
       const response = await axios.post('https://localhost:7236/api/Bus', newBus);
-      console.log('POST Response:', response.data); // Проверяем, что возвращает сервер
-      fetchData(); // Обновляем данные
+      console.log('POST Response:', response.data);
+      fetchData(); 
     } catch (err) {
       setError(err.message);
       console.error('Error adding bus:', err);
