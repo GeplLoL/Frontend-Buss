@@ -1,13 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import AppRoutes from './routes';
+import BusList from './components/BusList';
 
-const App = () => (
-  <Router>
-    <Navbar />
-    <AppRoutes />
-  </Router>
-);
+function App() {
+  return (
+    <div>
+      <h1>Welcome to the Bus Management System</h1>
+      <BusList />
+    </div>
+  );
+}
 
 export default App;

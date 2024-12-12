@@ -10,7 +10,7 @@ const Register = () => {
     try {
       await register(formData);
       setMessage('Registration successful!');
-      setFormData({ email: '', password: '' }); // Очистка полей после успешной регистрации
+      setFormData({ email: '', password: '' });
     } catch (error) {
       setMessage(error.response?.data || 'An error occurred');
     }
